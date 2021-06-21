@@ -40,3 +40,34 @@
 .header button:hover {
   background-color: rgb(86, 170, 86);
 }
+.todoList {
+  display: flex;
+  flex-flow: column;
+  max-width: 500px;
+  margin: 50px auto;
+}
+.task {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid grey;
+  margin: 10px 0;
+}
+.task .taskName {
+  width: 35%;
+  padding: 10px;
+}
+.task .taskDeadline {
+  width: 35%;
+  padding: 10px;
+}
+.task button {
+  width: 30%;
+  border: none;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  background-color: tomato;
+  cursor: pointer;
+}
