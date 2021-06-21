@@ -7,8 +7,10 @@ const App: FC = () => {
     <div className="App">
       <div className="header">
         <div className="inputContainer">
-          <input type="text" placeholder="Task..." required />
-          <input type="date" />
+          <div className="inputs">
+            <input type="text" placeholder="Task..." required />
+            <input type="date" />
+          </div>
           <button>Add task</button>
         </div>
       </div>
