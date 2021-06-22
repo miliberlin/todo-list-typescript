@@ -60,7 +60,7 @@ const App: FC = () => {
         </div>
       </div>
       <div className="sortingPanel">
-        <p>Sort date <span id="sortBtn" onClick={handleSort}>⬆️</span></p>
+        <p className="sortBtnContainer">Sort date <span id="sortBtn" onClick={handleSort}>⬆️</span></p>
       </div>
       <div className="todoList">
         {todoList
