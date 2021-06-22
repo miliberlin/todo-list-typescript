@@ -72,3 +72,6 @@
   background-color: tomato;
   cursor: pointer;
 }
+#sortBtn {
+  cursor: pointer;
+}

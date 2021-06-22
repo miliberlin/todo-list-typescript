@@ -8,11 +8,24 @@ const App: FC = () => {
   const [task, setTask] = useState<string>("");
   const [deadline, setDeadline] = useState<Date>(new Date())
   const [todoList, setTodoList] = useState<ITask[]>([]);
+  const [sorting, setSorting] = useState<string>("asc");
+  const sortBtn = document.querySelector('#sortBtn') as HTMLElement;
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     if (event.target.name === "task") {setTask(event.target.value)}
     else if (event.target.name === "deadline") {
       setDeadline(new Date(event.target.value))
+    }
+  }
+
+  const handleSort = (event) => {
+    if (sorting === "asc") {
+      event.target.innerText = "⬆️";
+      setSorting("desc");
+    }
+    else {
+      event.target.innerText = "⬇️"
+      setSorting("asc")
     }
   }
 
@@ -46,10 +59,13 @@ const App: FC = () => {
           <button onClick={addTask}>Add task</button>
         </div>
       </div>
+      <div className="sortingPanel">
+        <p>Sort date <span id="sortBtn" onClick={handleSort}>⬆️</span></p>
+      </div>
       <div className="todoList">
         {todoList
         .sort((a: ITask,b: ITask) => {
-          return a.deadline.getTime() - b.deadline.getTime();
+          return sorting === "asc" ? a.deadline.getTime() - b.deadline.getTime() : b.deadline.getTime() - a.deadline.getTime()
         })
         .map((task: ITask, key: number) => {
           return <TodoTask key={key} task={task} completeTask={completeTask}/>
