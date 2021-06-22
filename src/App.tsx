@@ -48,8 +48,10 @@ const App: FC = () => {
       </div>
       <div className="todoList">
         {todoList
+        .sort((a: ITask,b: ITask) => {
+          return a.deadline.getTime() - b.deadline.getTime();
+        })
         .map((task: ITask, key: number) => {
-          // console.log(task.deadline)
           return <TodoTask key={key} task={task} completeTask={completeTask}/>
         })
         }
