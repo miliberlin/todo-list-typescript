@@ -9,7 +9,6 @@ const App: FC = () => {
   const [deadline, setDeadline] = useState<Date>(new Date())
   const [todoList, setTodoList] = useState<ITask[]>([]);
   const [sorting, setSorting] = useState<string>("asc");
-  const sortBtn = document.querySelector('#sortBtn') as HTMLElement;
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     if (event.target.name === "task") {setTask(event.target.value)}
@@ -60,7 +59,7 @@ const App: FC = () => {
         </div>
       </div>
       <div className="sortingPanel">
-        <p className="sortBtnContainer">Sort date <span id="sortBtn" onClick={handleSort}>⬆️</span></p>
+        <p className="sortBtnContainer">Sort by date <span id="sortBtn" onClick={handleSort}>⬆️</span></p>
       </div>
       <div className="todoList">
         {todoList

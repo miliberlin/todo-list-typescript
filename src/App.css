@@ -1,10 +1,10 @@
 .App {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: antiquewhite;
+  background-color: #ecc8af;
   height: 100vh;
 }
 .header {
-  background-color: tomato;
+  background-color: #495867;
   padding: 50px;
 }
 .header .inputContainer {
@@ -29,7 +29,7 @@
 }
 .header button {
   border: none;
-  border: 1px solid grey;
+  background-color: #768948;
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
   border-left: none;
@@ -38,7 +38,7 @@
   transition: background-color 300ms;
 }
 .header button:hover {
-  background-color: rgb(86, 170, 86);
+  background-color: #b8c794;
 }
 .todoList {
   display: flex;
@@ -69,18 +69,22 @@
   border: none;
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
-  background-color: tomato;
+  background-color: #ce796b;
   cursor: pointer;
+  transition: background-color 300ms;
+}
+.task button:hover {
+  background-color: #e7ad99;
 }
 .sortingPanel {
   display: flex;
   justify-content: center;
+  background-color: #8899aa;
 }
 .sortBtnContainer {
-  background-color: rgb(0, 105, 96);
   color: #fff;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 5px 20px;
   border-radius: 8px;
 }
 #sortBtn {
