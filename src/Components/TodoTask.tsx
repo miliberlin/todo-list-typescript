@@ -1,23 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { ITask } from '../Interfaces';
 
 interface Props {
     task: ITask;
     completeTask(taskNameToDelete: string): void;
+    editTask(taskToEdit: string): void;
 }
 
-const TodoTask = ({task, completeTask}: Props) => {
+const TodoTask = ({task, completeTask, editTask}: Props) => {
+    const [editMode, setEditMode] = useState<boolean>(false);
     return (
         <div className="task">
             <div className="taskName">{task.taskName}</div>
             <div className="taskDeadline">
                 {`${task.deadline.getFullYear()}-${
-              (task.deadline.getMonth()+1) < 10 ? '0'+(task.deadline.getMonth()+1) : task.deadline.getMonth()+1
-            }-${
-                task.deadline.getDate() < 10 ? '0'+ task.deadline.getDate() : task.deadline.getDate()
-            }`}
+                    (task.deadline.getMonth()+1) < 10 ? '0'+(task.deadline.getMonth()+1) : task.deadline.getMonth()+1
+                }-${
+                    task.deadline.getDate() < 10 ? '0'+ task.deadline.getDate() : task.deadline.getDate()
+                }`}
             </div>
-            <button onClick={() => {completeTask(task.taskName)}}>X</button>
+            <button className="editTask" onClick={() => {editTask(task.taskName)}}>Edit</button>
+            <button className="deleteTask" onClick={() => {completeTask(task.taskName)}}>X</button>
         </div>
     )
 }

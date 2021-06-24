@@ -41,6 +41,11 @@ const App: FC = () => {
     }))
   }
 
+  const editTask = (taskToEdit) => {
+    return taskToEdit
+  }
+
+
   return (
     <div className="App">
       <div className="header">
@@ -67,7 +72,7 @@ const App: FC = () => {
           return sorting === "asc" ? a.deadline.getTime() - b.deadline.getTime() : b.deadline.getTime() - a.deadline.getTime()
         })
         .map((task: ITask, key: number) => {
-          return <TodoTask key={key} task={task} completeTask={completeTask}/>
+          return <TodoTask key={key} task={task} completeTask={completeTask} editTask={editTask}/>
         })
         }
       </div>
