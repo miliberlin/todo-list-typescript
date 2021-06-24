@@ -29,10 +29,15 @@ const App: FC = () => {
   }
 
   const addTask = ():void => {
-    const newTask = {taskName: task, deadline: (deadline)}
-    todoList.length === 0 ? todoList.push({taskName: task, deadline: (deadline)}) : setTodoList([...todoList, newTask]);
-    setTask("");
-    setDeadline(new Date());
+    if (task.length === 0) {
+      alert("Please insert a task name")
+    }
+    else {
+      const newTask = {taskName: task, deadline: (deadline)}
+      todoList.length === 0 ? todoList.push({taskName: task, deadline: (deadline)}) : setTodoList([...todoList, newTask]);
+      setTask("");
+      setDeadline(new Date());
+    }
   }
 
   const completeTask = (taskNameToDelete: string): void => {
@@ -41,8 +46,10 @@ const App: FC = () => {
     }))
   }
 
-  const editTask = (taskToEdit) => {
-    return taskToEdit
+  const editTask = (taskToEdit: ITask): ITask => {
+    let task = todoList.filter(task => task.taskName === taskToEdit.taskName && task.deadline === taskToEdit.deadline)[0]
+    console.log(task)
+    return task
   }
 
 
@@ -51,7 +58,7 @@ const App: FC = () => {
       <div className="header">
         <div className="inputContainer">
           <div className="inputs">
-            <input type="text" placeholder="Task..." required name="task" value={task} onChange={handleChange}/>
+            <input type="text" placeholder="Task..." name="task" value={task} onChange={handleChange} />
             <input type="date" name="deadline" value={
               `${deadline.getFullYear()}-${
               (deadline.getMonth()+1) < 10 ? '0'+(deadline.getMonth()+1) : deadline.getMonth()+1

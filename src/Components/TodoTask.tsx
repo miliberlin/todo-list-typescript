@@ -4,11 +4,10 @@ import { ITask } from '../Interfaces';
 interface Props {
     task: ITask;
     completeTask(taskNameToDelete: string): void;
-    editTask(taskToEdit: string): void;
+    editTask(taskToEdit: ITask): ITask;
 }
 
 const TodoTask = ({task, completeTask, editTask}: Props) => {
-    const [editMode, setEditMode] = useState<boolean>(false);
     return (
         <div className="task">
             <div className="taskName">{task.taskName}</div>
@@ -19,7 +18,7 @@ const TodoTask = ({task, completeTask, editTask}: Props) => {
                     task.deadline.getDate() < 10 ? '0'+ task.deadline.getDate() : task.deadline.getDate()
                 }`}
             </div>
-            <button className="editTask" onClick={() => {editTask(task.taskName)}}>Edit</button>
+            <button className="editTask" onClick={() => {editTask(task)}}>Edit</button>
             <button className="deleteTask" onClick={() => {completeTask(task.taskName)}}>X</button>
         </div>
     )
